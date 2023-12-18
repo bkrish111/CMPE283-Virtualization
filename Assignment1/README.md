@@ -21,13 +21,15 @@
    apt install libelf-dev make flex bison libssl-dev 
 
 8. Check the kernel version and install that version using the below commands in the screenshot.
-   <!-- <img width="620" alt="Screen Shot 2022-11-07 at 2 35 50 AM" src="https://user-images.githubusercontent.com/30898620/200289837-d5c06035-3856-4a1d-b2c1-505934d5ffe9.png"> -->
+   ![WhatsApp Image 2023-12-17 at 21 20 11_bd8f00ec](https://github.com/bkrish111/CMPE283-Virtualization/assets/147780244/e4b289bf-3e2b-411a-bca1-1114610b1dd8)
+
 9. Execute the “make” command to create the kernel object.
 10. Execute sudo “insmod cmpe283-1.ko” command to load the kernel object.
 11. Now, To view the output use the “dmesg” command.
-    <!-- <img width="621" alt="Screen Shot 2022-11-07 at 2 36 10 AM" src="https://user-images.githubusercontent.com/30898620/200289972-6860e85e-fe97-4d8d-a7ac-24e91bc32b7d.png">
-    <img width="622" alt="Screen Shot 2022-11-07 at 2 36 27 AM" src="https://user-images.githubusercontent.com/30898620/200289992-110fcad0-a435-4396-b0e0-d0274c32b8a5.png">
-    <img width="617" alt="Screen Shot 2022-11-07 at 2 36 43 AM" src="https://user-images.githubusercontent.com/30898620/200290004-549f5356-3644-4075-a476-5a81b829b7d5.png"> -->
+    ![WhatsApp Image 2023-12-17 at 12 51 42 PM](https://github.com/bkrish111/CMPE283-Virtualization/assets/147780244/79a796fb-0d98-4c25-87f2-bccd9549361d)
+    ![WhatsApp Image 2023-12-17 at 12 51 41 PM](https://github.com/bkrish111/CMPE283-Virtualization/assets/147780244/288c6e3e-657d-4478-b1f2-66b3d03bd421)
+    ![WhatsApp Image 2023-12-17 at 12 51 42 PM (1)](https://github.com/bkrish111/CMPE283-Virtualization/assets/147780244/e309c0db-d420-4096-9829-e7963fc1fbeb)
+
 
 # CMPE 283 Assignment 2
 
@@ -54,12 +56,10 @@
 
 - Anudeep
 
-
 created the kernel and reviewed the lectures and Intel SDM to gather information on other VM-Execution Controls. 
 Also, explored GCP VM setup and configured a GCP VM for completing assignments.
 
 - Bhargav
-
 
 created the kernel and reviewed the lectures, made changes to the provided cmpe283-1.c file, 
 and compiled the C file. Additionally, explored GCP Cloud, 
