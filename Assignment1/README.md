@@ -4,11 +4,11 @@
 2. Once a Project is created enable “Compute Engine API” for that project to create and manage Virtual Machines.
 3. Once we enable Compute Engine API, Create Virtual Machine Instance using the below command. (also enable nested-virtualization)
 
-   gcloud compute instances create vm-283 --project=vm-assignment-408008 --zone=us-central1-a --machine-type=n2-standard-8 --network-interface=network-tier=PREMIUM,subnet=default --maintenance-policy=MIGRATE --provisioning-model=STANDARD --service-account=5155186242-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --min-cpu-platform=Intel\ Cascade\ Lake --create-disk=auto-delete=yes,boot=yes,device-name=instance-1,image=projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20221018,mode=rw,size=100,type=projects/vm-assignment-408008/zones/us-central1-a/diskTypes/pd-ssd --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any --enable-nested-virtualization --metadata=ssh-keys=anude:"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCgiNQ1vbU51Qa6nP3wqYeZSVz/kmo0DN0rk7YYk6fu1At7i2vNU4EjhpxG8W5uJbADc9YAVKujCoOSATh7DjD9zWuPviT+wNHaeDo8yGHzfne/tejqWWhIlA3X9kSuET3L2NUQXwDHFeJCs61TbNITulQr+WdWwWsnFIfKk43z1hNP2U8DkGjsXkpjA0PQDPCYn83G1+pLm2zi2VxPNqPxnnsB2uZEVnAvgfyzebBhQNal5z4TS5E5yM2DMJjAMIPaGCkH6xGY7/YJho+nSsCWZkC3HfVkESekNgkL/kmQQu8PfJIAmFmXioThsb48eTK5OTp7uZDL4bECqTL/lcy+gjgkmUh65s048A455PzpUKRbGkP83U5KCL6f/GfUnTuoycZoyuLJ+o+p4u7FE/kJErVQZRuVSBEXoK7i7hzNj8ttjbz/+Yf26rTl2iygO51pJazN47zABjL5atR4KvW7CyjbEph7lCroqmjtBoiWXesBw4BoYvyMJheRKeTUA/k= anude@Anudeep_PC"
+   gcloud compute instances create vm-283 --project=vm-assignment-408008 --zone=us-central1-a --machine-type=n2-standard-8 --network-interface=network-tier=PREMIUM,subnet=default --maintenance-policy=MIGRATE --provisioning-model=STANDARD --service-account=5155186242-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --min-cpu-platform=Intel\ Cascade\ Lake --create-disk=auto-delete=yes,boot=yes,device-name=instance-1,image=projects/ubuntu-os-cloud/global/images/ubuntu-1804-bionic-v20221018,mode=rw,size=100,type=projects/vm-assignment-408008/zones/us-central1-a/diskTypes/pd-ssd --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any --enable-nested-virtualization --metadata=ssh-keys=user:key
 
 4. Once an instance is created, open the instance using “gcloud compute ssh <<instance_name>>”.
   
-5. Once we get into the instance, clone the git repo after changing the “Cmpe-2831.c” file. For all the MSRs you can find the code here.
+5. Once we get into the instance, clone the git repo after changing the “cmpe283-1.c” file. For all the MSRs you can find the code here.
 6. File cmpe-281 includes:
    1. Primary Process based controls (IA32_VMX_PROCBASED_CTLS)
    2. Secondary process based controls (IA32_VMX_PROCBASED_CTLS2)
@@ -16,6 +16,10 @@
    4. Entry controls (IA32_VMX_ENTRY_CTLS)
    5. Cannot include tertiary controls as it has Can set=No in primary controls
 7. Install necessary packages (mainly make) in the root user by using the “apt install gcc make” command.
+
+   If getting errors do apt update, followed by below packages
+   apt install libelf-dev make flex bison libssl-dev 
+
 8. Check the kernel version and install that version using the below commands in the screenshot.
    <!-- <img width="620" alt="Screen Shot 2022-11-07 at 2 35 50 AM" src="https://user-images.githubusercontent.com/30898620/200289837-d5c06035-3856-4a1d-b2c1-505934d5ffe9.png"> -->
 9. Execute the “make” command to create the kernel object.
@@ -50,144 +54,19 @@
 
 - Anudeep
 
-Created the kernel
-In the VM, installed the necessary kernel modules.
-Comprehended and researched the assignment's code.
-The code has been updated to reflect the changes that were discussed.
-Test files were created and compiled.
+
+created the kernel and reviewed the lectures and Intel SDM to gather information on other VM-Execution Controls. 
+Also, explored GCP VM setup and configured a GCP VM for completing assignments.
 
 - Bhargav
 
-Created the kernel
-Reviewed the canvas lecture and understood the steps to be taken
-Did some research on CPUID instructions and CPU leaf nodes.
-Recognized where and what changes to make in order to complete the assignment
-README.md has been updated and documentation has been created.
+
+created the kernel and reviewed the lectures, made changes to the provided cmpe283-1.c file, 
+and compiled the C file. Additionally, explored GCP Cloud, 
+examined various VM options for selection, and initiated the setup of VMs.
 
 <br />
 
 ## Question 2: (Steps used to complete the assignment)
 
-1. Download the source code in the VM [official kernel website](https://www.kernel.org/).
-
-   ```
-   sudo apt-get install wget
-   wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.0.7.tar.xz
-   ```
-
-2. Extract the code
-
-   ```
-   tar xvf linux-6.0.7.tar.xz
-   ```
-
-3. Run below command to install all the required packages
-
-   ```
-   sudo apt-get install git fakeroot build-essential ncurses-dev xz-utils libssl-dev bc flex libelf-dev bison
-   ```
-
-4. Configuring the kernel by copying the existing configuration file to a `.config` file
-
-   ```
-   cd linux-6.0.7
-   cp -v /boot/config-$(uname -r) .config
-   ```
-
-5. Build the kernel through the following commands:
-
-   - `sudo make modules`
-   - `sudo make`
-   - While compiling the kernel, an error may occur saying `No rule to make target 'debian/canonical-certs.pem'`, then execute the below commands:
-     - `scripts/config --disable SYSTEM_TRUSTED_KEYS`
-     - `scripts/config --disable SYSTEM_REVOCATION_KEYS`
-   - `sudo make modules_install`
-   - `sudo make install`
-
-6. Bootloader is automatically updated because of the `make install` and now we can reboot the system and check the kernel version
-
-   - `sudo reboot`
-   - `uname -mrs`
-   - Output: **Linux 6.0.7 x86_64**
-
-     ### Please refer images folder
-
-7. Chnage the two files in the linux repo by using the files updated in the repo
-
-   - **vmx.c**: `/linux-6.0.7/arch/x86/kvm/vmx/vmx.c`
-   - **cpuid.c**: `/linux-6.0.7/arch/x86/kvm/cpuid.c`
-
-8. Build and installed modules again
-
-   - `sudo make modules && sudo make modules_install`
-
-9. For loading the newly built modules, perform following commands:
-
-   - `sudo rmmod kvm_intel`
-   - `sudo rmmod kvm`
-   - `sudo modprobe kvm_intel`
-
-10. For testing the functionality, an nested VM was created in the GCP VM. The steps to create an nested VM are as follows:
-
-    - Download the Ubuntu cloud image`.img`(QEMU compatible image) file from this [ubuntu cloud images site] in GCP VM(https://cloud-images.ubuntu.com/).
-
-    ```
-    wget https://cloud-images.ubuntu.com/bionic/current/bionic-server-cloudimg-amd64.img
-    ```
-
-    - Install the required qemu packages
-
-    ```
-    sudo apt update && sudo apt install qemu-kvm -y
-    ```
-
-    -Change the password and login into the VM, perform the below commands:
-
-    ```
-    1)  sudo apt-get install cloud-image-utils
-
-    2)  cat >user-data <<EOF
-        #cloud-config
-        password: newpass <<new password here>>
-        chpasswd: { expire: False }
-        ssh_pwauth: True
-        EOF
-
-    3)  cloud-localds user-data.img user-data
-    ```
-
-    - Now, to run this ubuntu image, execute this:
-
-    ```
-    sudo qemu-system-x86_64 -enable-kvm -hda bionic-server-cloudimg-amd64.img -drive "file=user-data.img,format=raw" -m 512 -curses -nographic
-    ```
-
-    - **username**: `ubuntu`
-    - **password**: `newpass`
-
-    - Now to check the functionality, we need the cpuid utility package, for that
-
-    ```
-    sudo apt-get update
-    sudo apt-get install cpuid
-    ```
-
-- NOTE: Make sure two terminals are open:
-  - the GCP VM terminal(T1)
-  - the nested VM terminal(logged in)(T2)
-
-<br />
-
-11. Testing the CPUID functionality for `%eax=0x4fffffff`
-
-- T2: `sudo cpuid -l 0x4fffffff`
-  ### Please refer images folder
-- T1: `sudo dmesg`
-  ### Please refer images folder
-
-12. Testing the CPUID functionality for `%eax=0x4ffffffe`
-
-- T2: `sudo cpuid -l 0x4ffffffe`
-  ### Please refer images folder
-- T1: `sudo dmesg`
-  ### Please refer images folder
+ ### Please refer above
