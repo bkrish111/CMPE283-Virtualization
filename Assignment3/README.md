@@ -131,28 +131,21 @@
 
 <br />
 
-10) Testing the CPUID functionality for `%eax=0x4fffffff`
-  - terminal2: `sudo cpuid -l 0x4fffffff`
-    ### Please refer images folder
-  - terminal1: `sudo dmesg` 
-    ### Please refer images folder
-   
-11)  Testing the CPUID functionality for `%eax=0x4ffffffe`
-  - terminal2: `sudo cpuid -l 0x4ffffffe`
-    ### Please refer images folder
-  - terminal1: `sudo dmesg` 
-    ### Please refer images folder
-  
+
 
 ## Question 3:
 
 Comment on the frequency of exits – does the number of exits increase at a stable rate? Or are theremore exits performed during certain VM operations? Approximately how many exits does a full VM boot entail?
 
-- For exits, **HLT(10)** and **CPUID(12)** the number of exits increases at a stable rates as these exits are called fairly regularly.
+- For exit 10 & 12 the number of exits increases at a stable rates as these exits are called fairly regularly. Please refer the below screenshots
 
   Output:
+   <img width="874" alt="9" src="https://github.com/bkrish111/CMPE283-Virtualization/assets/147780244/1d418ddc-e6c2-4497-a60a-069aa3151a0b">
 
-  #### Please refer screenshots folder
+   ![10](https://github.com/bkrish111/CMPE283-Virtualization/assets/147780244/aacec653-121b-41ef-9799-b5967866bab4)
+
+
+ 
 
 <br />
 
