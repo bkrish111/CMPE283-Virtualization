@@ -141,7 +141,8 @@ Comment on the frequency of exits – does the number of exits increase at a sta
 
 - For exit 10 & 12 the number of exits increases at a stable rates as these exits are called fairly regularly. Please refer the below screenshots
 
-  Output:
+  ## Output:
+  
    <img width="874" alt="9" src="https://github.com/bkrish111/CMPE283-Virtualization/assets/147780244/1d418ddc-e6c2-4497-a60a-069aa3151a0b">
 
    ![10](https://github.com/bkrish111/CMPE283-Virtualization/assets/147780244/aacec653-121b-41ef-9799-b5967866bab4)
