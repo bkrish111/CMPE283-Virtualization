@@ -129,15 +129,5 @@
 
 <br />
 
-10) Testing the CPUID functionality for `%eax=0x4fffffff`
-  - terminal2: `sudo cpuid -l 0x4fffffff`
-    ### Please refer images folder
-  - terminal1: `sudo dmesg` 
-    ### Please refer images folder
-   
-11)  Testing the CPUID functionality for `%eax=0x4ffffffe`
-  - terminal2: `sudo cpuid -l 0x4ffffffe`
-    ### Please refer images folder
-  - terminal1: `sudo dmesg` 
-    ### Please refer images folder
+
   
