@@ -131,6 +131,8 @@
 
 <br />
 
+In terminal2, write a new test script(filename="test_cpuid.sh") to test the functionality of %eax=0x4ffffffd and %eax=0x4ffffffc
+
 
 
 ## Question 3:

@@ -129,5 +129,13 @@
 
 <br />
 
+10) Testing the CPUID functionality for %eax=0x4fffffff
+    T2: sudo cpuid -l 0x4fffffff
+    T1: sudo dmesg
+
+11) Testing the CPUID functionality for %eax=0x4ffffffe
+    T2: sudo cpuid -l 0x4ffffffe
+    T1: sudo dmesg
+    Please refer images folder
 
   
